@@ -14,23 +14,13 @@ def generate_launch_description():
     spawn_distributor = Node(package="teleop",            
         executable="teleop_node",
         name="teleop_node",
-        # output="screen",)
     )
 
     spawn_joy = Node(package = "joy",
     executable = "joy_node",
     name = "joy_node",
-    # output = screen,
-    # parameters=[{
-    # "dev": LaunchConfiguration("dev"),
-    # "deadzone": LaunchConfiguration("deadzone"),
-    # "autorepeat_rate": LaunchConfiguration("autorepeat_rate"),
-    # }]
     )
 
-
-
-    # Launch them all!
     return LaunchDescription([
         spawn_distributor,
         spawn_joy
