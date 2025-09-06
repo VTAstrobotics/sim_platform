@@ -24,7 +24,7 @@ class Teleop : public rclcpp::Node
 
     void joy_callback(sensor_msgs::msg::Joy::SharedPtr msg){
 
-    double lin = msg->axes[axis_linear] * linear_scale;
+    double lin = msg->axes[axis_linear] * linear_scale * -1;
     double ang = msg->axes[axis_angular]* angular_scale;
 
     geometry_msgs::msg::Twist cmd;
