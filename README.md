@@ -2,9 +2,9 @@
 
 ## Requirements
 
-- **ROS 2 Humble**
-- **Gazebo Classic**
-- **The following packages: **
+- ROS 2 Humble
+- Gazebo Classic
+- The following packages: 
   ```
   sudo apt install \
 	  ros-humble-gazebo-ros-pkgs \
@@ -17,7 +17,7 @@
   ```
 ## Setup & Usage
 
-- Connect your joystick controller to the computer.
+- Connect your joystick controller to your computer
 - Run the bringup script:
    ```
    ./setup/bringup_robot.sh
