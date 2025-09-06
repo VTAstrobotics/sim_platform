@@ -1,10 +1,10 @@
-This project allows you to drive a robot in simulation using a joystick controller with ROS 2 Humble and Gazebo Classic.
+# This project allows you to drive a robot in simulation using a joystick controller with ROS 2 Humble and Gazebo Classic.
 
 ## Requirements
 
 - **ROS 2 Humble**
 - **Gazebo Classic**
-- **The Following Packages**
+- **The following packages: **
   ```
   sudo apt install \
 	  ros-humble-gazebo-ros-pkgs \
@@ -17,12 +17,12 @@ This project allows you to drive a robot in simulation using a joystick controll
   ```
 ## Setup & Usage
 
-1. Connect your joystick controller to the computer.
-2. Run the bringup script:
+- Connect your joystick controller to the computer.
+- Run the bringup script:
    ```
    ./setup/bringup_robot.sh
    ```
-3. You should now see Gazebo open and spawn our robot model. You can now drive the robot around the environment with the left joystick on your controller.
+- You should now see Gazebo open and spawn our robot model. You can now drive the robot around the environment with the left joystick on your controller.
 
 ## Future Use
 
