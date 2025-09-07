@@ -3,6 +3,7 @@ source /opt/ros/humble/setup.bash
 
 colcon build
 source install/setup.bash
+source /usr/share/gazebo/setup.sh
 
 gnome-terminal -- bash -c "ros2 launch sim launch_sim.launch.py; exec bash"
 
