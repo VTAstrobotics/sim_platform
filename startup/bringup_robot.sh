@@ -5,6 +5,4 @@ colcon build
 source install/setup.bash
 source /usr/share/gazebo/setup.sh
 
-gnome-terminal -- bash -c "ros2 launch sim launch_sim.launch.py; exec bash"
-
-gnome-terminal -- bash -c "ros2 launch teleop teleop.launch.py; exec bash"
+ros2 launch sim_launcher launch_simulation.launch.py
