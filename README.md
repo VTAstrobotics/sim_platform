@@ -1,7 +1,7 @@
 # This project allows you to drive a robot in simulation using a joystick controller with ROS 2 Humble and Gazebo Classic.
 
 ## Requirements
-
+- Ubuntu 22.04
 - ROS 2 Humble
 - Gazebo Classic
 - The following packages: 
