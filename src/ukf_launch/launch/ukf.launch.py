@@ -12,6 +12,8 @@ def generate_launch_description():
 
     ukf_config_file = os.path.join(package_share_dir, 'config', 'ukf_config.yaml')
 
+    navsat_config = os.path.join(package_share_dir, 'config', 'navsat.yaml')
+
     return LaunchDescription([
         Node(
             package='robot_localization',
@@ -19,6 +21,18 @@ def generate_launch_description():
             name='ukf_node',
             output='screen',
             parameters=[ukf_config_file]
-        )
+        ),
+        Node(
+            package='robot_localization',
+            executable='navsat_transform_node',
+            name='navsat_transform',
+            output='screen',
+            parameters=[navsat_config],
+            remappings=[
+                ('gps/fix', 'gps/data'),
+                ('odometry/filtered', 'odometry/filtered'),
+                ('imu/data', 'imu/data'),
+            ]
+        ),
 
     ])
