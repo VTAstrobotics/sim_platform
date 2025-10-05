@@ -2,14 +2,13 @@ ukf_node:
   ros__parameters:
     frequency: 15.0
     sensor_timeout: 1.9
-    two_d_mode: false            # set true if you want planar-only motion
+    two_d_mode: false            
     publish_tf: false
     odom_frame: odom
     base_link_frame: base_link
-    world_frame: map             # recommended when using GPS
+    world_frame: map             
     print_diagnostics: true
 
-    # Fuse pose x,y,yaw and twist vx,vy,yaw_rate (no z/roll/pitch)
     odom0: /odom
     odom0_config: [ true,  true,  false,   # x y z
                     false, false, true,    # roll pitch yaw
@@ -22,8 +21,7 @@ ukf_node:
     odom0_nodelay:      false
     odom0_rejection_threshold: 2.0
 
-    # --------------------------
-    # 2) IMU
+
     imu0: /imu/data
     imu0_config: [ false, false, false,   # x y z (
                    false, false,  true,   # roll pitch yaw 
