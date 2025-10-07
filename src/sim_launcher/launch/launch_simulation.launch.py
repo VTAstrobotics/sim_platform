@@ -8,12 +8,15 @@ def generate_launch_description():
     # Locate the other packages' share directories
     sim_share = get_package_share_directory('sim')
     teleop_share = get_package_share_directory('teleop')
+    ukf_share = get_package_share_directory('ukf_launch')
 
     sim_launch = os.path.join(sim_share, 'launch', 'launch_sim.launch.py')
     teleop_launch = os.path.join(teleop_share, 'launch', 'teleop.launch.py')
+    ukf_launch = os.path.join(ukf_share, 'launch', 'ukf.launch.py')
 
     return LaunchDescription([
         IncludeLaunchDescription(PythonLaunchDescriptionSource(sim_launch)),
         IncludeLaunchDescription(PythonLaunchDescriptionSource(teleop_launch)),
+        IncludeLaunchDescription(PythonLaunchDescriptionSource(ukf_launch))
     ])
 
