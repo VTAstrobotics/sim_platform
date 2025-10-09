@@ -12,7 +12,7 @@ def generate_launch_description():
 
     ukf_config_file = os.path.join(package_share_dir, 'config', 'ukf_config.yaml')
 
-    navsat_config = os.path.join(package_share_dir, 'config', 'navsat.yaml')
+    navsat_config = os.path.join(package_share_dir, 'config', 'navsat_config.yaml')
 
     return LaunchDescription([
         Node(
