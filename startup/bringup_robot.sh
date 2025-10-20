@@ -5,4 +5,9 @@ colcon build
 source install/setup.bash
 source /usr/share/gazebo/setup.sh
 
+
 ros2 launch sim_launcher launch_simulation.launch.py
+
+ros2 param set /rviz use_sim_time true
+ros2 param set /rtabmap use_sim_time true
+ros2 param set /ukf_node use_sim_time true

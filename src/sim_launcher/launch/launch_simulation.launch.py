@@ -18,7 +18,7 @@ def generate_launch_description():
     ukf_launch = os.path.join(ukf_share, 'launch', 'ukf.launch.py')
     
     parameters={
-          'frame_id':'base_footprint',
+          'frame_id':'base_link',
           'use_sim_time':True,
           'subscribe_depth':True,
           'use_action_for_goal':True,
@@ -40,18 +40,18 @@ def generate_launch_description():
           ]
         
         # SLAM mode:
-    # slam = Node(
-    #         package='rtabmap_slam', executable='rtabmap', output='screen',
-    #         parameters=[parameters],
-    #         remappings=remappings,
-    #         arguments=['-d']) # This will delete the previous database (~/.ros/rtabmap.db)
+    slam = Node(
+            package='rtabmap_slam', executable='rtabmap', output='screen',
+            parameters=[parameters],
+            remappings=remappings,
+            arguments=['-d']) # This will delete the previous database (~/.ros/rtabmap.db)
 
     
 
     return LaunchDescription([
         IncludeLaunchDescription(PythonLaunchDescriptionSource(sim_launch)),
         IncludeLaunchDescription(PythonLaunchDescriptionSource(teleop_launch)),
-        IncludeLaunchDescription(PythonLaunchDescriptionSource(ukf_launch))
+        IncludeLaunchDescription(PythonLaunchDescriptionSource(ukf_launch)),
         # slam
 
         
