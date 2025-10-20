@@ -14,7 +14,7 @@ def generate_launch_description():
         executable='ukf_node',
         name='ukf_node',
         output='screen',
-        parameters=[ukf_config_file]
+         parameters=[{'use_sim_time': True}, ukf_config_file]
     )
 
     navsat_node = Node(
@@ -22,7 +22,7 @@ def generate_launch_description():
         executable='navsat_transform_node',
         name='navsat_transform',
         output='screen',
-        parameters=[navsat_config],
+         parameters=[{'use_sim_time': True}, navsat_config],
         remappings=[
             ('gps/fix', 'gps/data'),
             ('odometry/filtered', 'odometry/filtered'),

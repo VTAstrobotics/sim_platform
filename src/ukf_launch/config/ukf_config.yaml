@@ -2,6 +2,7 @@ ukf_node:
   ros__parameters:
     frequency: 15.0
     sensor_timeout: 1.9
+    transform_timeout: 0.5
     publish_tf: true            
     odom_frame: odom
     base_link_frame: base_link
@@ -40,14 +41,14 @@ ukf_node:
     # imu0_linear_acceleration_rejection_threshold: 100
 
     
-    odom1: /odometry/gps
-    odom1_config: [ true,  true,  false,    # x y z, removing z for now
-                    false, false, false,   # roll pitch yaw
-                    false, false, false,   # vx vy vz
-                    false, false, false,   # vroll vpitch vyaw
-                    false, false, false ]  # ax ay az
-    odom1_differential: false
-    odom1_relative:     false
-    odom1_queue_size:   5
-    odom1_nodelay:      false
-    # odom1_rejection_threshold: 2.5
+    # odom1: /odometry/gps
+    # odom1_config: [ true,  true,  false,    # x y z, removing z for now
+    #                 false, false, false,   # roll pitch yaw
+    #                 false, false, false,   # vx vy vz
+    #                 false, false, false,   # vroll vpitch vyaw
+    #                 false, false, false ]  # ax ay az
+    # odom1_differential: false
+    # odom1_relative:     false
+    # odom1_queue_size:   5
+    # odom1_nodelay:      false
+    # # odom1_rejection_threshold: 2.5
