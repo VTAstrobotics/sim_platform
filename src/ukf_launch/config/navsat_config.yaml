@@ -6,9 +6,10 @@ navsat_transform:
     zero_altitude: false
     broadcast_utm_transform: false
     publish_filtered_gps: true
-    use_odometry_yaw: false     
+    use_odometry_yaw: false
     wait_for_datum: true
 
-    odom_frame: odom            
+    odom_frame: odom
     base_link_frame: base_link
     world_frame: map
+    datum: [37.4275, 122.1697, 0.0]
