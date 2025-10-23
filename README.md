@@ -20,7 +20,7 @@
 - Connect your joystick controller to your computer
 - Run the bringup script:
    ```
-   ./setup/bringup_robot.sh
+   ./startup/bringup_robot.sh
    ```
 - You should now see Gazebo open and spawn our robot model. You can now drive the robot around the environment with the left joystick on your controller.
 
