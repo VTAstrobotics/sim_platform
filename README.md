@@ -20,10 +20,23 @@
 - Connect your joystick controller to your computer
 - Run the bringup script:
    ```
-   ./setup/bringup_robot.sh
+   ./startup/bringup_robot.sh
    ```
 - You should now see Gazebo open and spawn our robot model. You can now drive the robot around the environment with the left joystick on your controller.
 
+## Other Useful Commands
+
+- If you want to see the data in another terminal, run the source command
+   ```
+   source /usr/share/gazebo/setup.sh
+   ```
+- Then you can echo the topic data
+   ```
+   ros2 topic list
+   ```
+   ```
+   ros2 topic echo [topic name]
+   ```
 ## Future Use
 
 We are hoping to use this platform as a way to develop and test our high-level autonomy.
