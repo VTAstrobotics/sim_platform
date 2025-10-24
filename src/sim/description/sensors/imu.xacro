@@ -32,7 +32,7 @@
                 </ros>
                 <output_type>sensor_msgs/Imu</output_type>
                 <frame_name>imu_link</frame_name>
-                <gaussian_noise>0.01</gaussian_noise>
+                <!-- <gaussian_noise>0.01</gaussian_noise> -->
                 <linear_acceleration_stddev>0.2</linear_acceleration_stddev>
                 <angular_velocity_stddev>0.1</angular_velocity_stddev>
                 <orientation_stddev>0.5</orientation_stddev>
