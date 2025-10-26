@@ -30,7 +30,7 @@ def generate_launch_description():
           'Reg/Force3DoF':'true',
           'Grid/RayTracing':'true', # Fill empty space
           'Grid/3D':'false', # Use 2D occupancy
-          'Grid/RangeMax':'3',
+          'Grid/RangeMax':'5',
           'Grid/NormalsSegmentation':'false', # Use passthrough filter to detect obstacles
           'Grid/MaxGroundHeight':'0.05', # All points above 5 cm are obstacles
           'Grid/MaxObstacleHeight':'0.4',  # All points over 1 meter are ignored
