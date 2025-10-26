@@ -12,10 +12,15 @@ def generate_launch_description():
     sim_share = get_package_share_directory('sim')
     teleop_share = get_package_share_directory('teleop')
     ukf_share = get_package_share_directory('ukf_launch')
+    nav2_bringup_share = get_package_share_directory('nav2_bringup')
+    our_nav_shar = get_package_share_directory('navigation')
+    nav2_params = os.path.join(our_nav_shar, 'config', 'nav2_params.yaml')
+
 
     sim_launch = os.path.join(sim_share, 'launch', 'launch_sim.launch.py')
     teleop_launch = os.path.join(teleop_share, 'launch', 'teleop.launch.py')
     ukf_launch = os.path.join(ukf_share, 'launch', 'ukf.launch.py')
+    nav2_launch = os.path.join(nav2_bringup_share, 'launch', 'navigation_launch.py')
     
     parameters={
           'frame_id':'base_link',
@@ -30,7 +35,8 @@ def generate_launch_description():
           'Grid/MaxGroundHeight':'0.05', # All points above 5 cm are obstacles
           'Grid/MaxObstacleHeight':'0.4',  # All points over 1 meter are ignored
           'wait_for_transform_duration': 1,
-          'Optimizer/GravitySigma':'0' # Disable imu constraints (we are already in 2D)
+          'Optimizer/GravitySigma':'0', # Disable imu constraints (we are already in 2D)
+          'Grid/FrameId':'map'
     }
 
     remappings=[
@@ -53,6 +59,13 @@ def generate_launch_description():
         IncludeLaunchDescription(PythonLaunchDescriptionSource(sim_launch)),
         IncludeLaunchDescription(PythonLaunchDescriptionSource(teleop_launch)),
         IncludeLaunchDescription(PythonLaunchDescriptionSource(ukf_launch)),
+        IncludeLaunchDescription(PythonLaunchDescriptionSource(nav2_launch), 
+                                 launch_arguments={
+                                    'use_sim_time': 'true',
+                                    'params_file': nav2_params,
+                                }.items()
+                            ),
+
         slam
 
         
