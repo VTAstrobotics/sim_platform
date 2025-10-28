@@ -16,7 +16,7 @@ def generate_launch_description():
     sim_launch = os.path.join(sim_share, 'launch', 'launch_sim.launch.py')
     teleop_launch = os.path.join(teleop_share, 'launch', 'teleop.launch.py')
     ukf_launch = os.path.join(ukf_share, 'launch', 'ukf.launch.py')
-    
+
     parameters={
           'frame_id':'base_link',
           'use_sim_time':True,
@@ -37,9 +37,10 @@ def generate_launch_description():
             ('rgb/image', '/camera/image_raw'),
             ('rgb/camera_info', '/camera/camera_info'),
             ('depth/image', '/camera/depth/image_raw'),
-            ('odom', '/odometry/filtered'), 
+            ('odom', '/odometry/filtered'),
+            ('gps/fix', '/gps/data')
           ]
-        
+
         # SLAM mode:
     slam = Node(
             package='rtabmap_slam', executable='rtabmap', output='screen',
@@ -47,7 +48,7 @@ def generate_launch_description():
             remappings=remappings,
             arguments=['-d']) # This will delete the previous database (~/.ros/rtabmap.db)
 
-    
+
 
     return LaunchDescription([
         IncludeLaunchDescription(PythonLaunchDescriptionSource(sim_launch)),
@@ -55,6 +56,6 @@ def generate_launch_description():
         IncludeLaunchDescription(PythonLaunchDescriptionSource(ukf_launch)),
         slam
 
-        
+
     ])
 
