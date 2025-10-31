@@ -15,7 +15,8 @@ def generate_launch_description():
 
     package_name='sim' #<--- CHANGE ME
 
-    world_file_name = 'barrels.world'  
+    world_file_name = 'empty.world'
+
 
     world_path = os.path.join(
         get_package_share_directory(package_name),

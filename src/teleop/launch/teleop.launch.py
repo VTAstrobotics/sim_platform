@@ -14,11 +14,13 @@ def generate_launch_description():
     spawn_distributor = Node(package="teleop",            
         executable="teleop_node",
         name="teleop_node",
+        parameters=[{'use_sim_time': True}]
     )
 
     spawn_joy = Node(package = "joy",
     executable = "joy_node",
     name = "joy_node",
+    parameters=[{'use_sim_time': True}]
     )
 
     return LaunchDescription([
