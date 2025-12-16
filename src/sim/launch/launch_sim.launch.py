@@ -15,7 +15,7 @@ def generate_launch_description():
 
     package_name='sim' #<--- CHANGE ME
 
-    world_file_name = 'empty.world'
+    world_file_name = 'desert.world' #<--- CHANGE ME
 
 
     world_path = os.path.join(
