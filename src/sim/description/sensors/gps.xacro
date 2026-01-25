@@ -15,13 +15,14 @@
       </geometry>
     </visual>
   </link>
-  
-<!--
+
+
   <gazebo reference="gps_link">
     <sensor name="gps" type="gps">
       <always_on>true</always_on>
       <update_rate>10</update_rate>
 
+      <!--
         <gps>
         <position_sensing>
           <horizontal>
