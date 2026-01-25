@@ -15,7 +15,8 @@
       </geometry>
     </visual>
   </link>
-
+  
+<!--
   <gazebo reference="gps_link">
     <sensor name="gps" type="gps">
       <always_on>true</always_on>
@@ -26,7 +27,7 @@
           <horizontal>
             <noise type="gaussian">
               <mean>0.0</mean>
-              <stddev>1.5</stddev>            <!-- meters -->
+              <stddev>1.5</stddev>            
               <bias_mean>0.0</bias_mean>
               <bias_stddev>0.0</bias_stddev>
             </noise>
@@ -34,7 +35,7 @@
           <vertical>
             <noise type="gaussian">
               <mean>0.0</mean>
-              <stddev>3.0</stddev>            <!-- meters -->
+              <stddev>3.0</stddev>            
               <bias_mean>0.0</bias_mean>
               <bias_stddev>0.0</bias_stddev>
             </noise>
@@ -55,6 +56,7 @@
           </vertical>
         </velocity_sensing>
       </gps>
+      -->
 
 
 
