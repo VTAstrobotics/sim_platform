@@ -61,12 +61,12 @@ def generate_launch_description():
         IncludeLaunchDescription(PythonLaunchDescriptionSource(sim_launch)),
         IncludeLaunchDescription(PythonLaunchDescriptionSource(teleop_launch)),
         IncludeLaunchDescription(PythonLaunchDescriptionSource(ukf_launch)),
-        IncludeLaunchDescription(PythonLaunchDescriptionSource(nav2_launch), 
-                                 launch_arguments={
-                                    'use_sim_time': 'true',
-                                    'params_file': nav2_params,
-                                }.items()
-                            ),
-        slam
+        # IncludeLaunchDescription(PythonLaunchDescriptionSource(nav2_launch), 
+        #                          launch_arguments={
+        #                             'use_sim_time': 'true',
+        #                             'params_file': nav2_params,
+        #                         }.items()
+        #                     ),
+        # slam
     ])
 
