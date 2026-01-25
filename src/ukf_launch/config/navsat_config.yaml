@@ -1,15 +1,26 @@
+# navsat_transform:
+#   ros__parameters:
+#     frequency: 15.0
+#     magnetic_declination_radians: 0.0
+#     yaw_offset: 0.0
+#     zero_altitude: false
+#     broadcast_utm_transform: false
+#     publish_filtered_gps: true
+#     use_odometry_yaw: false
+#     wait_for_datum: false
+
+#     odom_frame: odom
+#     base_link_frame: base_link
+#     world_frame: map
+    # datum: [37.4275, -122.1697, 0.0]
 navsat_transform:
   ros__parameters:
-    frequency: 15.0
+    frequency: 30.0
+    delay: 3.0
     magnetic_declination_radians: 0.0
     yaw_offset: 0.0
-    zero_altitude: false
-    broadcast_utm_transform: false
+    zero_altitude: true
+    broadcast_cartesian_transform: true
     publish_filtered_gps: true
-    use_odometry_yaw: false
+    use_odometry_yaw: true
     wait_for_datum: false
-
-    odom_frame: odom
-    base_link_frame: base_link
-    world_frame: map
-    # datum: [37.4275, -122.1697, 0.0]

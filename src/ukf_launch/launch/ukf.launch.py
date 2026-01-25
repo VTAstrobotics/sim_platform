@@ -40,17 +40,18 @@ def generate_launch_description():
         ]
     )
 
-    # delayed_navsat = TimerAction(
-    #     period=18.0,
-    #     actions = [navsat_node]
-    # )
     # Delay ukf_node by 5 seconds
     delayed_ukf = TimerAction(
+        period=23.0,  # seconds
+        actions=[ukf_node, ukf_node_gps]
+    )
+    delayed_navsat = TimerAction(
         period=20.0,  # seconds
         # actions=[ukf_node, ukf_node_gps]
-        actions=[ukf_node]
+        actions=[navsat_node]
     )
 
     return LaunchDescription([
-        delayed_ukf
+        delayed_ukf,
+        delayed_navsat
     ])
