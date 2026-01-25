@@ -21,7 +21,7 @@ def generate_launch_description():
     ukf_node_gps = Node(
         package='robot_localization',
         executable='ukf_node',
-        name='ukf_node',
+        name='ukf_node_gps',
         output='screen',
          parameters=[{'use_sim_time': True}, ukf_gps_config_file],
          remappings =[("odometry/filtered", "odometry/filtered_map")]
