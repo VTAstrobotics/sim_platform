@@ -24,7 +24,7 @@ def generate_launch_description():
         name='ukf_node',
         output='screen',
          parameters=[{'use_sim_time': True}, ukf_gps_config_file],
-         remappings =[("odometry/filtered", "odometry/gps_fused")]
+         remappings =[("odometry/filtered", "odometry/filtered_map")]
     )
 
     navsat_node = Node(
