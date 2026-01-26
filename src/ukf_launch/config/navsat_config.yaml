@@ -15,10 +15,13 @@
     # datum: [37.4275, -122.1697, 0.0]
 navsat_transform:
   ros__parameters:
+    # odom_frame: odom
+    # base_link_frame: base_link
+    # world_frame: map
     frequency: 30.0
     delay: 3.0
     magnetic_declination_radians: 0.0
-    yaw_offset: 0.0
+    yaw_offset: 3.14
     zero_altitude: true
     broadcast_cartesian_transform: false # TODO need to look into what this actually publishes
     publish_filtered_gps: true

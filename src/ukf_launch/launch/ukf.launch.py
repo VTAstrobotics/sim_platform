@@ -35,8 +35,9 @@ def generate_launch_description():
          parameters=[{'use_sim_time': True}, navsat_config],
         remappings=[
             ('gps/fix', 'gps/data'),
-            ('odometry/filtered', 'odometry/filtered'),
+            ('odometry/filtered', 'odometry/filtered_map'),
             ('imu/data', 'imu/data'),
+            ('odometry/gps', 'odometry/gps')
         ]
     )
 
