@@ -48,8 +48,8 @@ ukf_node_gps:
                     true,  true,  false,   # vx vy vz
                     false, false, false,    # vroll vpitch vyaw
                     false, false, false ]  # ax ay az
-    odom1_differential: true
-    odom1_relative:     false
+    odom1_differential: false
+    odom1_relative:     true
     odom1_queue_size:   10
     odom1_nodelay:      false
     # odom0_rejection_threshold: 100

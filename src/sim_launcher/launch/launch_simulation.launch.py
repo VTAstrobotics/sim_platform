@@ -45,7 +45,7 @@ def generate_launch_description():
             ('rgb/camera_info', '/camera/camera_info'),
             ('depth/image', '/camera/depth/image_raw'),
             ('odom', '/odometry/filtered'),
-            # ('gps/fix', '/gps/data')
+            ('gps/fix', '/gps/data')
           ]
 
         # SLAM mode:
