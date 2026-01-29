@@ -50,14 +50,13 @@ private:
 
         // TODO Send cartesian coordinates to nav2 action
 
-
         nav2_msgs::action::NavigateToPose::Goal goal;
         goal.pose.header.frame_id = "map";
         goal.pose.header.stamp = this->now();
         goal.pose.pose.position.x = p.x;
         goal.pose.pose.position.y = p.y;
         goal.pose.pose.position.z = 0.0;
-        goal.pose.pose.orientation.w = 1.0; 
+        goal.pose.pose.orientation.w = 1.0;
 
         rclcpp_action::Client<nav2_msgs::action::NavigateToPose>::SendGoalOptions options;
 
@@ -78,7 +77,7 @@ private:
         //     [this](rclcpp_action::ClientGoalHandle<nav2_msgs::action::NavigateToPose>::SharedPtr,
         //            const std::shared_ptr<const nav2_msgs::action::nav2_msgs::action::NavigateToPose::Feedback> feedback)
         // {
-            
+
         // };
 
         options.result_callback =
