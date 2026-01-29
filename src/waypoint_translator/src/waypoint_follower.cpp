@@ -11,7 +11,6 @@
 
 #include "robot_localization/srv/from_ll.hpp"
 #include "nav2_msgs/action/navigate_to_pose.hpp"
-
 using std::placeholders::_1;
 
 class WaypointSubscriber : public rclcpp::Node
@@ -37,6 +36,12 @@ private:
         request->ll_point.latitude = msg->latitude;
         request->ll_point.longitude = msg->longitude;
         request->ll_point.altitude = msg->altitude; // could disregard this?
+
+        if (!from_ll_client->wait_for_service(std::chrono::seconds(2)))
+        {
+            RCLCPP_ERROR(get_logger(), "/fromLL service not available");
+            return;
+        }
 
         auto future =
             from_ll_client->async_send_request(request, std::bind(&WaypointSubscriber::from_ll_response_callback, this, _1));
@@ -99,9 +104,15 @@ private:
                 break;
             }
         };
+
+        if (!nav_client->wait_for_action_server(std::chrono::seconds(2)))
+        {
+            RCLCPP_ERROR(this->get_logger(), "Nav2 action server not available");
+            return;
+        }
+
         nav_client->async_send_goal(goal, options);
     }
-
     rclcpp::Subscription<sensor_msgs::msg::NavSatFix>::SharedPtr gps_subscription;
     rclcpp::Client<robot_localization::srv::FromLL>::SharedPtr from_ll_client;
     rclcpp_action::Client<nav2_msgs::action::NavigateToPose>::SharedPtr nav_client;
