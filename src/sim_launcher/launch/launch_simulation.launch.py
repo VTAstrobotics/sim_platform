@@ -22,7 +22,8 @@ def generate_launch_description():
     sim_launch = os.path.join(sim_share, 'launch', 'launch_sim.launch.py')
     teleop_launch = os.path.join(teleop_share, 'launch', 'teleop.launch.py')
     ukf_launch = os.path.join(ukf_share, 'launch', 'ukf.launch.py')
-    waypoint_translator_share = os.path.join(waypoint_translator_share, 'launch', 'waypoint_translator.launch.py')
+
+    waypoint_translator_launch = os.path.join(waypoint_translator_share, 'launch', 'waypoint_translator.launch.py')
 
     nav2_launch = os.path.join(nav2_bringup_share, 'launch', 'navigation_launch.py')
     parameters={
@@ -71,6 +72,6 @@ def generate_launch_description():
                                 }.items()
                             ),
         slam,
-        waypoint_translator_share
+        IncludeLaunchDescription(PythonLaunchDescriptionSource(waypoint_translator_launch))
     ])
 
