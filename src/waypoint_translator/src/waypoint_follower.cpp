@@ -125,3 +125,22 @@ int main(int argc, char *argv[])
     rclcpp::shutdown();
     return 0;
 }
+
+/**
+ * 
+ * ros2 topic pub --once /gps_waypoint sensor_msgs/msg/NavSatFix "
+header:
+  frame_id: 'gps'
+status:
+  status: 0
+  service: 1
+latitude: 37.4219999
+longitude: -122.0840575
+altitude: 0.0
+position_covariance: [0.0, 0.0, 0.0,
+                      0.0, 0.0, 0.0,
+                      0.0, 0.0, 0.0]
+position_covariance_type: 0
+"
+
+ */
