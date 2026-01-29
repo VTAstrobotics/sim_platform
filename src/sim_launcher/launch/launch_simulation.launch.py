@@ -16,10 +16,13 @@ def generate_launch_description():
     our_nav_shar = get_package_share_directory('navigation')
     nav2_params = os.path.join(our_nav_shar, 'config', 'nav2_params.yaml')
 
+    waypoint_translator_share = get_package_share_directory('waypoint_translator')
+
 
     sim_launch = os.path.join(sim_share, 'launch', 'launch_sim.launch.py')
     teleop_launch = os.path.join(teleop_share, 'launch', 'teleop.launch.py')
     ukf_launch = os.path.join(ukf_share, 'launch', 'ukf.launch.py')
+    waypoint_translator_share = os.path.join(waypoint_translator_share, 'launch', 'waypoint_translator.launch.py')
 
     nav2_launch = os.path.join(nav2_bringup_share, 'launch', 'navigation_launch.py')
     parameters={
@@ -67,6 +70,7 @@ def generate_launch_description():
                                     'params_file': nav2_params,
                                 }.items()
                             ),
-        slam
+        slam,
+        waypoint_translator_share
     ])
 
