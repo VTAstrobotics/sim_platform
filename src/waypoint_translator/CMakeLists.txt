@@ -13,6 +13,8 @@ find_package(rclcpp_components REQUIRED)
 find_package(std_msgs REQUIRED)
 find_package(geometry_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(robot_localization REQUIRED)
+find_package(nav2_msgs REQUIRED)
 # uncomment the following section in order to fill in
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
@@ -20,7 +22,7 @@ find_package(sensor_msgs REQUIRED)
 
 
 add_executable(waypoint_translator_node src/waypoint_follower.cpp)
-ament_target_dependencies(waypoint_translator_node rclcpp std_msgs geometry_msgs sensor_msgs) 
+ament_target_dependencies(waypoint_translator_node rclcpp std_msgs geometry_msgs sensor_msgs rclcpp_action rclcpp_components robot_localization nav2_msgs)
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
