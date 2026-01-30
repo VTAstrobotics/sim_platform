@@ -25,7 +25,7 @@ public:
         from_ll_client = this->create_client<robot_localization::srv::FromLL>("/fromLL");
 
         nav_client =
-            rclcpp_action::create_client<nav2_msgs::action::NavigateToPose>(this, "navigate_to_pose");
+            rclcpp_action::create_client<nav2_msgs::action::NavigateToPose>(this, "/navigate_to_pose");
     }
 
 private:
@@ -134,8 +134,8 @@ header:
 status:
   status: 0
   service: 1
-latitude: 37.4219999
-longitude: -122.0840575
+latitude: 37.4275
+longitude: 122.1697
 altitude: 0.0
 position_covariance: [0.0, 0.0, 0.0,
                       0.0, 0.0, 0.0,
