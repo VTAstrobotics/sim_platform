@@ -127,7 +127,7 @@ int main(int argc, char *argv[])
 }
 
 /**
- * 
+ *
  * ros2 topic pub --once /gps_waypoint sensor_msgs/msg/NavSatFix "
 header:
   frame_id: 'gps'
