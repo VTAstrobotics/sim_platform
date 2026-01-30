@@ -25,7 +25,7 @@ public:
         from_ll_client = this->create_client<robot_localization::srv::FromLL>("/fromLL");
 
         nav_client =
-            rclcpp_action::create_client<nav2_msgs::action::NavigateToPose>(this, "navigate_to_pose");
+            rclcpp_action::create_client<nav2_msgs::action::NavigateToPose>(this, "/navigate_to_pose");
     }
 
 private:
@@ -127,7 +127,7 @@ int main(int argc, char *argv[])
 }
 
 /**
- * 
+ *
  * ros2 topic pub --once /gps_waypoint sensor_msgs/msg/NavSatFix "
 header:
   frame_id: 'gps'
