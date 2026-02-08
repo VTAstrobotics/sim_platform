@@ -13,7 +13,11 @@
 	  ros-humble-xacro \
 	  ros-humble-joint-state-publisher \
 	  ros-humble-robot-state-publisher \
-	  ros-humble-rviz2
+	  ros-humble-rviz2 \
+ 	  ros-humble-nav2-bringup \
+      ros-humble-nav2 \
+  	  ros-humble-rtabmap-ros \
+ 	  ros-humble-robot-localization
   ```
 ## Setup & Usage
 

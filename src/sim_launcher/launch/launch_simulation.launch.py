@@ -36,7 +36,8 @@ def generate_launch_description():
           'Grid/MaxObstacleHeight':'0.4',  # All points over 1 meter are ignored
           'wait_for_transform_duration': 1,
           'Optimizer/GravitySigma':'0', # Disable imu constraints (we are already in 2D)
-          'Grid/FrameId':'map'
+          'Grid/FrameId':'rtabmap_map',
+          'publish_tf' : False
     }
 
     remappings=[
@@ -66,9 +67,6 @@ def generate_launch_description():
                                     'params_file': nav2_params,
                                 }.items()
                             ),
-
         slam
-
-
     ])
 
