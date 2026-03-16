@@ -30,10 +30,10 @@ public:
             rclcpp_action::create_client<nav2_msgs::action::NavigateToPose>(this, "/navigate_to_pose");
 
         pose_sub = this->create_subscription<geometry_msgs::msg::PoseWithCovarianceStamped>("/odom", 10,[this](geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr msg)
-            {
-                current_pose = msg->pose.pose;
-                pose_received = true;
-            });
+        {
+            current_pose = msg->pose.pose;
+            pose_received = true;
+        });
     }
 
 private:
@@ -66,23 +66,7 @@ private:
         RCLCPP_INFO(this->get_logger(), "GPS to map: x=%.3f y=%.3f z=%.3f", p.x, p.y, p.z);
 
         // TODO Send cartesian coordinates to nav2 action
-        /*
-If you're just sending a one off message you can do something like this:
-ros2 topic pub --once /gps_waypoint sensor_msgs/msg/NavSatFix "
-header:
-  frame_id: 'gps'
-status:
-  status: 0
-  service: 1
-latitude: 37.4219999
-longitude: -122.0840575
-altitude: 0.0
-position_covariance: [0.0, 0.0, 0.0,
-                      0.0, 0.0, 0.0,
-                      0.0, 0.0, 0.0]
-position_covariance_type: 0
-"
-*/
+
         // Out of bounds checking starts here
         if (!pose_received)
         {
@@ -102,8 +86,8 @@ position_covariance_type: 0
         if (dist > max_distance)
         {
             double scale = max_distance / dist;
-            target_x = current_pose_.position.x + dx * scale;
-            target_y = current_pose_.position.y + dy * scale;
+            target_x = current_pose.position.x + dx * scale;
+            target_y = current_pose.position.y + dy * scale;
 
             RCLCPP_WARN(this->get_logger(), "Pose too far, moving it to %.2f m.", max_distance);
         }
