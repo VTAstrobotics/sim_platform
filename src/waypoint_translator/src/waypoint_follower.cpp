@@ -42,7 +42,7 @@ private:
     {
 
         rclcpp::Subscription<geometry_msgs::msg::PoseWithCovarianceStamped>::SharedPtr pose_sub;
-        geometry_msgs::msg::Pose current_pose
+        geometry_msgs::msg::Pose current_pose;
 
         auto request = std::make_shared<robot_localization::srv::FromLL::Request>();
         request->ll_point.latitude = msg->latitude;
