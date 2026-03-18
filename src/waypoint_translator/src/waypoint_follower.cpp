@@ -2,6 +2,7 @@
 #include <functional>
 #include <memory>
 #include <string>
+#include <cmath>
 
 #include "rclcpp/rclcpp.hpp"
 #include "std_msgs/msg/string.hpp"
@@ -29,7 +30,7 @@ public:
         nav_client =
             rclcpp_action::create_client<nav2_msgs::action::NavigateToPose>(this, "/navigate_to_pose");
 
-        pose_sub = this->create_subscription<geometry_msgs::msg::PoseWithCovarianceStamped>("/odom", 10,[this](geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr msg)
+        pose_sub = this->create_subscription<geometry_msgs::msg::PoseWithCovarianceStamped>("/amcl_pose", 10,[this](geometry_msgs::msg::PoseWithCovarianceStamped::SharedPtr msg)
         {
             current_pose = msg->pose.pose;
             pose_received = true;
@@ -42,7 +43,6 @@ private:
 
         rclcpp::Subscription<geometry_msgs::msg::PoseWithCovarianceStamped>::SharedPtr pose_sub;
         geometry_msgs::msg::Pose current_pose
-        bool pose_received = false;
 
         auto request = std::make_shared<robot_localization::srv::FromLL::Request>();
         request->ll_point.latitude = msg->latitude;
@@ -153,6 +153,9 @@ private:
     rclcpp::Subscription<sensor_msgs::msg::NavSatFix>::SharedPtr gps_subscription;
     rclcpp::Client<robot_localization::srv::FromLL>::SharedPtr from_ll_client;
     rclcpp_action::Client<nav2_msgs::action::NavigateToPose>::SharedPtr nav_client;
+    rclcpp::Subscription<geometry_msgs::msg::PoseWithCovarianceStamped>::SharedPtr pose_sub;
+    geometry_msgs::msg::Pose current_pose;
+    bool pose_received = false;
 };
 
 int main(int argc, char *argv[])
