@@ -2,7 +2,6 @@ import os
 
 from ament_index_python.packages import get_package_share_directory
 
-
 from launch import LaunchDescription
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
@@ -10,13 +9,11 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch_ros.actions import Node
 
 
-
 def generate_launch_description():
 
-    package_name='sim' #<--- CHANGE ME
+    package_name = 'sim'  # <--- CHANGE ME
 
-    world_file_name = 'arena.world'
-
+    world_file_name = 'arena.sdf'
 
     world_path = os.path.join(
         get_package_share_directory(package_name),
@@ -24,29 +21,41 @@ def generate_launch_description():
         world_file_name
     )
 
+    # Robot State Publisher
     rsp = IncludeLaunchDescription(
-                PythonLaunchDescriptionSource([os.path.join(
-                    get_package_share_directory(package_name),'launch','rsp.launch.py'
-                )]), launch_arguments={'use_sim_time': 'true'}.items()
+        PythonLaunchDescriptionSource(
+            os.path.join(
+                get_package_share_directory(package_name),
+                'launch',
+                'rsp.launch.py'
+            )
+        ),
+        launch_arguments={'use_sim_time': 'true'}.items()
     )
 
-    # Include the Gazebo launch file, provided by the gazebo_ros package
+    # Launch Gazebo Ignition (ros_gz_sim)
     gazebo = IncludeLaunchDescription(
-    PythonLaunchDescriptionSource([os.path.join(
-        get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')]),
-    launch_arguments={'world': world_path}.items()
+        PythonLaunchDescriptionSource(
+            os.path.join(
+                get_package_share_directory('ros_gz_sim'),
+                'launch',
+                'gz_sim.launch.py'   # <-- changed from gazebo.launch.py
+            )
+        ),
+        launch_arguments={'gz_args': f'-r {world_path}'}.items()  # <-- important
     )
 
+    # Spawn robot into Ignition
+    spawn_entity = Node(
+        package='ros_gz_sim',
+        executable='create',   # <-- changed from spawn_entity.py
+        arguments=[
+            '-topic', 'robot_description',
+            '-name', 'my_bot'   # <-- changed from -entity
+        ],
+        output='screen'
+    )
 
-    # Run the spawner node from the gazebo_ros package. The entity name doesn't really matter if you only have a single robot.
-    spawn_entity = Node(package='gazebo_ros', executable='spawn_entity.py',
-                        arguments=['-topic', 'robot_description',
-                                   '-entity', 'my_bot'],
-                        output='screen')
-
-
-
-    # Launch all!
     return LaunchDescription([
         rsp,
         gazebo,
